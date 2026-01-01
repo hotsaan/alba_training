@@ -32,12 +32,6 @@
 
 ---
 
-## Deployment
-
-* 로컬 환경 테스트 완료 후 AWS EC2 (Free Tier) 배포 예정
-
----
-
 ## Authentication & Security
 
 본 프로젝트는 외부 인증 및 SNS 로그인 연동을 전제로 설계된 구조,
