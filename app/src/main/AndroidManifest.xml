@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kr.ac.uc.albago"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- 지도 권한 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+
+    <application
+        android:enableOnBackInvokedCallback="true"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Albago"
+        tools:targetApi="33"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config">
+
+
+        <!-- 얘가 문제였음 아무리 물어봐도 이상하게 알려줬는데 블로그보고 ㅋㅋ -->
+        <meta-data
+            android:name="com.naver.maps.map.NCP_KEY_ID"
+            android:value=" "/>
+
+        <!-- 앱 시작점: SplashActivity만 MAIN/LAUNCHER -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+<!--        <activity android:name=".GuestMainActivity" android:exported="true" />-->
+
+        <activity android:name=".employer.EmployerMainActivity" android:exported="true"/>
+        <activity android:name=".RegisterActivity" android:exported="true" />
+        <activity android:name=".ForgotChoiceActivity" android:exported="true" />
+        <activity android:name=".FindPasswordActivity" android:exported="true" />
+        <activity android:name=".FindIdActivity" android:exported="true" />
+        <activity android:name=".AdminMainActivity" android:exported="true" />
+        <activity android:name=".UserMainActivity" android:exported="true" />
+        <activity android:name=".ProfileSetupActivity" android:exported="true" />
+        <activity android:name=".MainActivity" android:exported="true" />
+        <activity android:name=".EditProfileActivity" android:exported="false" />
+        <activity android:name=".CompanyMainActivity" android:exported="true" />
+        <activity android:name=".RegisterCompanyActivity" android:exported="true"/>
+        <activity android:name=".ManageCompanyActivity" android:exported="true"/>
+        <activity android:name=".NotificationActivity"/>
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value=""/>
+    </application>
+</manifest>
