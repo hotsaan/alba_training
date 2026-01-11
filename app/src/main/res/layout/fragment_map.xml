@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 상단 툴바 -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="지도"/>
+
+    <!-- 종 아이콘 + 뱃지 (툴바 오른쪽 오버레이) -->
+    <FrameLayout
+        android:id="@+id/notification_container"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp">
+
+        <ImageButton
+            android:id="@+id/button_notification"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_notification"
+            android:contentDescription="알림" />
+
+        <View
+            android:id="@+id/notification_badge"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/badge_red_circle"
+            android:layout_gravity="top|end"
+            android:visibility="gone"
+            android:translationX="-4dp"
+            android:translationY="4dp"/>
+    </FrameLayout>
+
+    <!-- 지도 -->
+    <com.naver.maps.map.MapView
+        android:id="@+id/naver_map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"/>
+
+    <!-- 좌측 하단: 내 주변 텍스트 + 표적 아이콘 -->
+    <TextView
+        android:id="@+id/buttonBrowseNearby"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/bg_store_info"
+        android:drawableStart="@drawable/ic_location"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="내 주변"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:elevation="4dp"/>
+
+    <!-- 매장 정보 바: 좌우 여백(폭 줄임, 네모상자) -->
+    <LinearLayout
+        android:id="@+id/store_info_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_store_info"
+        android:visibility="gone"
+        android:elevation="8dp"
+        android:padding="12dp">
+
+        <Button
+            android:id="@+id/btnSelectLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="위치 선택 완료"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="32dp"
+            android:visibility="gone"
+            android:elevation="8dp"/>
+
+        <ImageView
+            android:id="@+id/store_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_place"
+            android:contentDescription="매장 사진"
+            android:layout_marginEnd="12dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/store_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="매장이름"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/store_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주소"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"/>
+
+            <TextView
+                android:id="@+id/store_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="업종"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상세보기"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_gravity="top|end"
+            android:padding="4dp"/>
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
