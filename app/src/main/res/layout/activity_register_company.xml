@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="0dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사업장 등록"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#222"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="18dp" />
+
+            <!-- 사업장 등록 폼 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/edittext_border"
+                android:elevation="6dp"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <EditText
+                    android:id="@+id/etStoreName"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/edittext_border"
+                    android:hint="상점명"
+                    android:paddingHorizontal="16dp"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/edittext_border"
+                    android:hint="주소"
+                    android:paddingHorizontal="16dp"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnCheckMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/deep_red"
+                    android:text="지도에서 위치 선택"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    app:cornerRadius="6dp" />
+
+                <EditText
+                    android:id="@+id/etLatitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/edittext_border"
+                    android:hint="위도"
+                    android:inputType="numberDecimal"
+                    android:paddingHorizontal="16dp"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etLongitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/edittext_border"
+                    android:hint="경도"
+                    android:inputType="numberDecimal"
+                    android:paddingHorizontal="16dp"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etPay"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/edittext_border"
+                    android:hint="시급 (₩)"
+                    android:inputType="number"
+                    android:paddingHorizontal="16dp"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etWorkTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/edittext_border"
+                    android:hint="근무 시간 (예: 09:00–18:00)"
+                    android:paddingHorizontal="16dp"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etJobDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/edittext_border"
+                    android:hint="업무 설명"
+                    android:paddingHorizontal="16dp"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etBossContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/edittext_border"
+                    android:hint="사장님 연락처"
+                    android:paddingHorizontal="16dp"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnSaveCompany"
+        android:text="저장하기"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/deep_red"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:elevation="8dp"
+        android:layout_margin="24dp"
+        app:cornerRadius="8dp"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
