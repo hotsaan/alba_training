@@ -114,3 +114,24 @@
 프로젝트 폴더명 : alba_training\gradle\wrapper
  로 변경
 distributionUrl=https\://services.gradle.org/distributions/gradle-8.14-bin.zip
+
+--
+## Build Environment
+
+This project uses Gradle Wrapper to ensure a consistent build environment
+across all developers and CI systems.
+
+### Requirements
+- JDK 21 (LTS)
+- Gradle 8.14 (via Gradle Wrapper)
+
+> Note:
+> Gradle runs on top of the Java runtime and supports only specific
+> Java versions. Java 24 is not supported by Gradle 8.x, so JDK 21 is
+> required for stable builds.
+
+### Gradle Wrapper
+The Gradle Wrapper automatically downloads and uses the required Gradle
+version defined in `gradle-wrapper.properties`, so manual Gradle
+installation is not necessary.
+
