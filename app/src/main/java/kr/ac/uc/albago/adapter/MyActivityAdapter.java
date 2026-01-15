@@ -17,13 +17,13 @@ public class MyActivityAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        switch (position) {
-            case 0: return new AppliedFragment();      // 신청
-            case 1: return new SubstituteFragment();   // 대체
-            case 2: return new CompletedFragment();    // 완료
-            case 3: return new FavoriteFragment();     // 관심
-            default: return new AppliedFragment();
-        }
+        return switch (position) {
+            case 0 -> new AppliedFragment();      // 신청
+            case 1 -> new SubstituteFragment();   // 대체
+            case 2 -> new CompletedFragment();    // 완료
+            case 3 -> new FavoriteFragment();     // 관심
+            default -> new AppliedFragment();
+        };
     }
 
     @Override
