@@ -102,8 +102,15 @@
 실제 서비스에 가까운 인증·지도·연동·배포 구조를 목표로 한 프로젝트입니다.
 
 ---
-
 ## Note
 
 현재는 기능 리빌딩 및 구조 정리 단계,
 인증 및 외부 API 연동을 중심으로 확장을 진행 중입니다.
+
+--
+
+1/15
+로컬기준
+프로젝트 폴더명 : alba_training\gradle\wrapper
+ 로 변경
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.14-bin.zip
