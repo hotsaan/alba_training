@@ -7,7 +7,7 @@
 ## Tech Stack
 
 * Android
-* Java (Spring Boot)
+* Java (Spring Boot) 21
 * MariaDB
 
 ---
@@ -102,8 +102,36 @@
 실제 서비스에 가까운 인증·지도·연동·배포 구조를 목표로 한 프로젝트입니다.
 
 ---
-
 ## Note
 
 현재는 기능 리빌딩 및 구조 정리 단계,
 인증 및 외부 API 연동을 중심으로 확장을 진행 중입니다.
+
+--
+
+1/15
+로컬기준
+프로젝트 폴더명 : alba_training\gradle\wrapper
+ 로 변경
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.14-bin.zip
+
+--
+## Build Environment
+
+This project uses Gradle Wrapper to ensure a consistent build environment
+across all developers and CI systems.
+
+### Requirements
+- JDK 21 (LTS)
+- Gradle 8.14 (via Gradle Wrapper)
+
+> Note:
+> Gradle runs on top of the Java runtime and supports only specific
+> Java versions. Java 24 is not supported by Gradle 8.x, so JDK 21 is
+> required for stable builds.
+
+### Gradle Wrapper
+The Gradle Wrapper automatically downloads and uses the required Gradle
+version defined in `gradle-wrapper.properties`, so manual Gradle
+installation is not necessary.
+
