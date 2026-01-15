@@ -7,7 +7,7 @@
 ## Tech Stack
 
 * Android
-* Java (Spring Boot)
+* Java (Spring Boot) 21
 * MariaDB
 
 ---
