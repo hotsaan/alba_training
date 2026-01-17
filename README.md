@@ -108,13 +108,9 @@
 인증 및 외부 API 연동을 중심으로 확장을 진행 중입니다.
 
 --
-
-1/15
-로컬기준
-프로젝트 폴더명 : alba_training\gradle\wrapper
- 로 변경
+1/15 로컬기준
+프로젝트 폴더명 : alba_training\gradle\wrapper로 변경
 distributionUrl=https\://services.gradle.org/distributions/gradle-8.14-bin.zip
-
 --
 원칙1
 Fragment / Activity에서는 토큰 문자열을 절대 다루지 않는다
