@@ -116,6 +116,13 @@
 distributionUrl=https\://services.gradle.org/distributions/gradle-8.14-bin.zip
 
 --
+원칙1
+Fragment / Activity에서는 토큰 문자열을 절대 다루지 않는다
+
+원칙2
+ApiService 메서드는 Authorization Header를 받지 않는다
+
+--
 ## Build Environment
 
 This project uses Gradle Wrapper to ensure a consistent build environment
@@ -134,4 +141,6 @@ across all developers and CI systems.
 The Gradle Wrapper automatically downloads and uses the required Gradle
 version defined in `gradle-wrapper.properties`, so manual Gradle
 installation is not necessary.
+
+--
 
