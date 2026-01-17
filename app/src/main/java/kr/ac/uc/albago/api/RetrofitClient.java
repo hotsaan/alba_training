@@ -88,10 +88,17 @@ public class RetrofitClient {
 
                         //  Interceptor/Authenticator 없는 전용 인스턴스로 refresh API 호출
                         RefreshResponse refreshResp = createRefreshApi().refresh(Map.of("refreshToken", refreshToken)).execute().body();
-                        if (refreshResp == null || refreshResp.accessToken == null) return null;
+                        if (refreshResp == null || refreshResp.accessToken == null) {
+                            prefs.edit().clear().apply();
+                            // TODO: 브로드캐스트 or 이벤트로 로그아웃 처리
+                            return null;
+                        }
 
                         // 새 accessToken 저장
-                        prefs.edit().putString("ACCESS_TOKEN", refreshResp.accessToken).apply();
+                        prefs.edit()
+                        .putString("ACCESS_TOKEN", refreshResp.accessToken)
+                        .putString("REFRESH_TOKEN", refreshResp.refreshToken) // ⭐ 추가
+                        .apply();
 
                         // 실패했던 원래 요청을 accessToken 붙여서 재요청
                         return response.request().newBuilder()
