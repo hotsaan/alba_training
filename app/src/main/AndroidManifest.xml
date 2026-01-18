@@ -26,14 +26,9 @@
         android:networkSecurityConfig="@xml/network_security_config">
 
 
-        <!-- 얘가 문제였음 아무리 물어봐도 이상하게 알려줬는데 블로그보고 ㅋㅋ -->
-        <meta-data
-            android:name="com.naver.maps.map.NCP_KEY_ID"
-            android:value=" "/>
-
         <!-- 앱 시작점: SplashActivity만 MAIN/LAUNCHER -->
         <activity
-            android:name=".SplashActivity"
+            android:name=".common.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,17 +39,17 @@
 <!--        <activity android:name=".GuestMainActivity" android:exported="true" />-->
 
         <activity android:name=".employer.EmployerMainActivity" android:exported="true"/>
-        <activity android:name=".RegisterActivity" android:exported="true" />
-        <activity android:name=".ForgotChoiceActivity" android:exported="true" />
-        <activity android:name=".FindPasswordActivity" android:exported="true" />
-        <activity android:name=".FindIdActivity" android:exported="true" />
-        <activity android:name=".AdminMainActivity" android:exported="true" />
+        <activity android:name=".common.RegisterActivity" android:exported="true" />
+        <activity android:name=".common.ForgotChoiceActivity" android:exported="true" />
+        <activity android:name=".common.FindPasswordActivity" android:exported="true" />
+        <activity android:name=".common.FindIdActivity" android:exported="true" />
+        <activity android:name=".common.AdminMainActivity" android:exported="true" />
         <activity android:name=".UserMainActivity" android:exported="true" />
         <activity android:name=".ProfileSetupActivity" android:exported="true" />
-        <activity android:name=".MainActivity" android:exported="true" />
+        <activity android:name=".common.MainActivity" android:exported="true" />
         <activity android:name=".EditProfileActivity" android:exported="false" />
         <activity android:name=".CompanyMainActivity" android:exported="true" />
-        <activity android:name=".RegisterCompanyActivity" android:exported="true"/>
+        <activity android:name=".common.RegisterCompanyActivity" android:exported="true"/>
         <activity android:name=".ManageCompanyActivity" android:exported="true"/>
         <activity android:name=".NotificationActivity"/>
         <meta-data

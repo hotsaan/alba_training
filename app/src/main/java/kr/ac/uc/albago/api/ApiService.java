@@ -52,19 +52,15 @@ public interface ApiService {
 
     //  회사 등록
     @POST("/api/employer/company")
-    Call<Map<String, String>> registerCompany(
-            @Header("Authorization") String token,
-            @Body Company company
-    );
+    Call<Map<String, String>> registerCompany(@Body Company company);
 
     //  사업자 공고 목록 조회
     @GET("/api/employer/jobposts")
-    Call<List<JobPostRequest>> getEmployerJobPosts(@Header("Authorization") String token);
+    Call<List<JobPostRequest>> getEmployerJobPosts();
 
     // 사업자 공고 등록
     @POST("/api/employer/jobposts")
     Call<Map<String, String>> createJobPost(
-            @Header("Authorization") String token,
             @Body JobPostRequest jobPost
     );
 
@@ -79,7 +75,6 @@ public interface ApiService {
     //  공고 수정
     @PUT("/api/jobposts/{id}")
     Call<Void> updateJobPost(
-            @Header("Authorization") String token,
             @Path("id") long id,
             @Body JobPostRequest post
     );
@@ -87,20 +82,11 @@ public interface ApiService {
     //  공고 삭제 (🔧 수정됨: 토큰 누락되어 있었음 → 추가함)
     @DELETE("/api/jobposts/{id}")
     Call<Void> deleteJobPost(
-            @Header("Authorization") String token,
             @Path("id") long id
     );
-
     //  회원가입 (최종 완료)
     @POST("/api/register")
     Call<RegisterResponse> register(@Body RegisterRequest req);
-
-    //  회원가입 (일부 입력 상태로 전송)
-    @POST("/api/register")
-    Call<RegisterResponse> registerPartialCheck(
-            @Body RegisterRequest req,
-            @Query("isPartial") boolean isPartial // New parameter
-    );
 
     // 로그인
     @POST("/api/login")
@@ -189,14 +175,11 @@ public interface ApiService {
     );
 
     @GET("/api/employer/my-companies")
-    Call<List<CompanyResponse>> getMyCompanies(@Header("Authorization") String token);
+    Call<List<CompanyResponse>> getMyCompanies();
 
 
     @GET("/api/employer/company/{companyId}/posts")
-    Call<List<JobPostRequest>> getJobPostsByCompany(
-            @Header("Authorization") String token,
-            @Path("companyId") String companyId
-    );
+    Call<List<JobPostRequest>> getJobPostsByCompany(@Path("companyId") String companyId);
 
     /**
      * 사장님이 받은 전체 지원자 목록 조회
@@ -207,8 +190,5 @@ public interface ApiService {
     );
 
     @POST("/api/employer/jobposts/{id}/refresh")
-    Call<Void> refreshJobPost(
-            @Header("Authorization") String token,
-            @Path("id") long jobId
-    );
+    Call<Void> refreshJobPost(@Path("id") long jobId);
 }

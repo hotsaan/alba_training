@@ -15,11 +15,18 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         //  Retrofit BASE URL (로컬 개발용)
+//        buildConfigField(
+//            "String",
+//            "API_BASE_URL",
+//            "\"http://192.168.35.202:8080/\""
+//        )
+
         buildConfigField(
             "String",
-            "API_BASE_URL",
-            "\"http://192.168.35.202:8080/\""
+            "GOOGLE_WEB_CLIENT_ID",
+            "\"xxxxxxxxxxxx.apps.googleusercontent.com\""
         )
+
     }
     buildFeatures {
         buildConfig = true
@@ -27,7 +34,12 @@ android {
 
     buildTypes {
         debug {
-            // 로컬 개발: defaultConfig 값 그대로 사용
+            // 에뮬레이터용 로컬 서버
+            buildConfigField(
+                "String",
+                "API_BASE_URL",
+                "\"http://10.0.2.2:8080\""
+            )
         }
 
         release {
@@ -37,14 +49,12 @@ android {
                 "proguard-rules.pro"
             )
 
-            // 🔹 나중에 AWS 올릴 때 여기만 바꾸면 됨
-            /*
+            //  나중에 EC2 올릴 때 여기만 변경
             buildConfigField(
                 "String",
                 "API_BASE_URL",
-                "\"https://api.your-domain.com/\""
+                "\"\""
             )
-            */
         }
     }
 

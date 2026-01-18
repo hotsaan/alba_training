@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import kr.ac.uc.albago.BuildConfig;
 import okhttp3.Authenticator;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -16,7 +16,6 @@ import okhttp3.Route;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import kr.ac.uc.albago.BuildConfig;
 
 
 /**
@@ -45,6 +44,10 @@ public class RetrofitClient {
      * 생성자 - 내부에서 OkHttpClient 및 Retrofit 인스턴스를 구성
      */
     private RetrofitClient(Context context, String role) {
+
+        android.util.Log.d("API_DEBUG",
+                "BASE_URL = " + BuildConfig.API_BASE_URL + ", role = " + role);
+
         this.context = context.getApplicationContext();
         this.prefs = context.getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE);
 
@@ -58,25 +61,14 @@ public class RetrofitClient {
                 .readTimeout(20, TimeUnit.SECONDS)
                 .writeTimeout(20, TimeUnit.SECONDS)
 
-                // 🔹 인터셉터: 모든 요청에 accessToken 자동 추가
-                .addInterceptor(new Interceptor() {
-                    @Override
-                    public Response intercept(Chain chain) throws IOException {
-                        Request original = chain.request();
-                        String token = prefs.getString("ACCESS_TOKEN", null);
-                        if (token != null && !token.isEmpty()) {
-                            original = original.newBuilder()
-                                    .header("Authorization", "Bearer " + token)
-                                    .build();
-                        }
-                        return chain.proceed(original);
-                    }
-                })
+                //  인터셉터: 모든 요청에 accessToken 자동 추가
+                .addInterceptor(new AuthInterceptor(context))
 
-                // 🔹 로그 출력
+
+                //  로그 출력
                 .addInterceptor(loggingInterceptor)
 
-                // 🔹 Authenticator: accessToken이 만료되어 401이 오면 자동으로 refresh 요청 수행
+                //  Authenticator: accessToken이 만료되어 401이 오면 자동으로 refresh 요청 수행
                 .authenticator(new Authenticator() {
                     @Override
                     public Request authenticate(Route route, Response response) throws IOException {
@@ -89,9 +81,9 @@ public class RetrofitClient {
                         //  Interceptor/Authenticator 없는 전용 인스턴스로 refresh API 호출
                         RefreshResponse refreshResp = createRefreshApi().refresh(Map.of("refreshToken", refreshToken)).execute().body();
                         if (refreshResp == null || refreshResp.accessToken == null) {
+                            // refresh 실패 → 토큰 정리
                             prefs.edit().clear().apply();
-                            // TODO: 브로드캐스트 or 이벤트로 로그아웃 처리
-                            return null;
+                            return null; // 여기서 끝
                         }
 
                         // 새 accessToken 저장
@@ -157,9 +149,9 @@ public class RetrofitClient {
      * force=true일 경우 기존 인스턴스를 무조건 새로 생성
      */
     public static synchronized void init(Context context, String role, boolean force) {
-        if ("employer".equals(role)) {
+        if ("EMPLOYER".equals(role)) {
             if (employerInstance == null || force) {
-                employerInstance = new RetrofitClient(context, "employer");
+                employerInstance = new RetrofitClient(context, "EMPLOYER");
             }
         } else {
             if (userInstance == null || force) {
@@ -172,9 +164,9 @@ public class RetrofitClient {
      * 역할별 RetrofitClient 인스턴스 가져오기
      */
     public static RetrofitClient getInstance(String role) {
-        if ("employer".equals(role)) {
+        if ("EMPLOYER".equals(role)) {
             if (employerInstance == null)
-                throw new IllegalStateException("RetrofitClient(employer) not initialized. Call init(context, \"employer\") first.");
+                throw new IllegalStateException("RetrofitClient(EMPLOYER) not initialized. Call init(context, \"EMPLOYER\") first.");
             return employerInstance;
         } else {
             if (userInstance == null)

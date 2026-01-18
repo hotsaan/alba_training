@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import kr.ac.uc.albago.R;
+import kr.ac.uc.albago.common.MainActivity;
 
 public class EmployerMainActivity extends AppCompatActivity {
 
@@ -27,7 +28,7 @@ public class EmployerMainActivity extends AppCompatActivity {
 
         // 토큰이 없으면 로그인 화면으로 이동
         if (accessToken == null) {
-            Intent intent = new Intent(this, kr.ac.uc.albago.MainActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
@@ -35,7 +36,7 @@ public class EmployerMainActivity extends AppCompatActivity {
         }
 
         // RetrofitClient 초기화
-        kr.ac.uc.albago.api.RetrofitClient.init(this, "employer");
+        kr.ac.uc.albago.api.RetrofitClient.init(this, "EMPLOYER");
         setContentView(R.layout.activity_company1_main);
 
         // BottomNavigationView 참조
